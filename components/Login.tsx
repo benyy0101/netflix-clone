@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Input from "./Input";
 import { useState } from "react";
+import axios from "axios";
+import { useCallback } from "react";
 
 function Login() { 
     const [userEmail, setEmail] = useState<string>("");
@@ -10,6 +12,20 @@ function Login() {
     const [userName, setName] = useState<string>("");
 
     const [hasAccount, setHasAccount] = useState<boolean>(true);
+
+    const register = useCallback(async () => {
+        try{
+            await axios.post('/api/register', {
+                email: userEmail,
+                password: userPassword,
+                name: userName
+            })
+        }
+        catch(e){
+
+        }
+    },[])
+    
 
     return (
         <div className="h-full w-full bg-hero bg-no-repeat bg-fixed bg-cover">
