@@ -24,7 +24,7 @@ function Login() {
         catch(e){
 
         }
-    },[])
+    },[userEmail, userPassword, userName])
     
 
     return (
@@ -66,7 +66,9 @@ function Login() {
                             onChange = {(e: React.ChangeEvent<HTMLInputElement>) => {setPassword(e.target.value)}}
                              />
                         </div>
-                        <button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-800 transition">
+                        <button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-800 transition"
+                        onClick={register}
+                        >
                             {hasAccount ? "Log In" : "Submit"}
                         </button>
                         {hasAccount && <p className="text-neutral-500 mt-12 ">
