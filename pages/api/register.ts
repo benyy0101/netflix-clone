@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 image:'',
                 emailVerified: new Date(),
             }})
-            
+            console.log(user);
         return res.status(201).json({user});
     }
     catch(error){

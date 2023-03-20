@@ -1,14 +1,26 @@
 "use client";
 
-import { Fragment } from "react";
-import Login from "../components/Login";
-import Image from "next/image";
+import { useCallback } from "react";
 import Input from "../components/Input";
 import { useState } from "react";
+import {signIn} from "next-auth/react";
 
 export default function Home() {
   const [userEmail, setEmail] = useState<string>("");
   const [userPassword, setPassword] = useState<string>("");
+
+  const loginHandler = useCallback(async () => {
+    try {
+      await signIn("credentials", {
+        redirect: false,
+        callbackUrl:'/',
+        email: userEmail,
+        password: userPassword,
+      });
+    } catch (e) {
+
+    }
+  },[userEmail, userPassword])
 
   return (
     <div className="flex justify-center">
@@ -35,7 +47,8 @@ export default function Home() {
           />
         </div>
 
-        <button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-800 transition">
+        <button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-800 transition"
+        onClick={loginHandler}>
           Log In
         </button>
         <p className="text-neutral-500 mt-12 ">
