@@ -67,7 +67,10 @@ export default function Home() {
           cursor-pointer
           hover:opacity-80
           transition
-          ">
+          "
+          onClick={async ()=>{
+            signIn('google', {callbackUrl:'http://localhost:3000/browse'})
+          }}>
             <FcGoogle size={30}/>
           </div>
 
