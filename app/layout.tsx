@@ -15,15 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="h-full w-full bg-hero bg-no-repeat bg-fixed bg-cover">
-          <div className="bg-black w-full h-full lg:bg-opacity-50">
-            <div className="px-12 py-5">
-              <Image
-                width={100}
-                height={50}
-                alt="Netflix Logo"
-                src="/../public/images/logo.png"
-              />
-            </div>
+          <div className="bg-black w-full h-full lg:bg-opacity-50">       
             {children}
           </div>
         </div>

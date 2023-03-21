@@ -8,6 +8,7 @@ import {signIn} from "next-auth/react";
 import {FcGoogle} from 'react-icons/fc';
 import {FaGithub} from 'react-icons/fa';
 
+import Image from 'next/image';
 
 export default function Home() {
   const [userEmail, setEmail] = useState<string>("");
@@ -22,13 +23,21 @@ export default function Home() {
         password: userPassword,
       });
     } catch (e) {
-
+        console.log(e);
     }
   },[userEmail, userPassword])
 
   return (
     <div className="flex justify-center">
       <div className="bg-black/70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
+      <div className="px-12 py-5">
+              <Image
+                width={100}
+                height={50}
+                alt="Netflix Logo"
+                src="/../public/images/logo.png"
+              />
+            </div>
         <h2 className="text-white text-4xl mb-8 font-semibold">Sign in</h2>
         <div className="flex flex-col gap-6">
           <Input
@@ -55,6 +64,7 @@ export default function Home() {
         onClick={loginHandler}>
           Log In
         </button>
+
         <div className="flex flex-row items-center gap-4 mt-8 justify-center">
           <div className="
           w-10
@@ -69,7 +79,7 @@ export default function Home() {
           transition
           "
           onClick={async ()=>{
-            signIn('google', {callbackUrl:'http://localhost:3000/browse'})
+            signIn('google', {callbackUrl:'/browse'})
           }}>
             <FcGoogle size={30}/>
           </div>
@@ -86,7 +96,7 @@ export default function Home() {
           hover:opacity-80
           transition
           "
-          onClick={()=>{signIn('github', {callbackUrl:'http://localhost:3000/browse'})}}
+          onClick={()=>{signIn('github', {callbackUrl:'./browse'})}}
           >
             <FaGithub size={30} />
           </div>
