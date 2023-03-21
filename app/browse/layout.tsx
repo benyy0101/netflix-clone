@@ -6,6 +6,7 @@ import {redirect} from "next/navigation";
 const BrowseLayout = async ({children}: {children: React.ReactNode} ) => {
     
     const session = await getServerSession(authOptions);
+    console.log(session);
     
     if(!session){
         redirect("/");

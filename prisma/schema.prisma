@@ -22,6 +22,7 @@ model User {
   favoritIds     String[]
   sessions       Session[]
   accounts       Account[]
+  profiles        Profile[]
 }
 
 model Account {
@@ -66,4 +67,14 @@ model Movie {
   thumbnailUrl String
   genre        String
   duration     String
+}
+
+model Profile {
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String @map("userId") @db.ObjectId
+  name         String
+  email        String
+  image        String
+  user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
 }
