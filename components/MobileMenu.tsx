@@ -15,6 +15,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({visible}) => {
                 <div className='px-3 text-center text-white hover:underline transition'>
                     Home
                 </div>
+                <div className='px-3 text-center text-white hover:underline transition'>
+                    Series
+                </div>
+                <div className='px-3 text-center text-white hover:underline transition'>
+                    Films
+                </div>
+                <div className='px-3 text-center text-white hover:underline transition'>
+                    New & Popular
+                </div>
+                <div className='px-3 text-center text-white hover:underline transition'>
+                    My List
+                </div>
+                <div className='px-3 text-center text-white hover:underline transition'>
+                    Browse by Languages
+                </div>
             </div>
         </div>
         )
