@@ -1,15 +1,14 @@
-'use client'
+"use client";
 import useCurrentUser from "../../hooks/useCurrentUser";
 import Profile from "../../components/Profile";
 
 import Navbar from "../../components/Navbar";
 import Billboard from "../../components/Billboard";
+import MovieList from "@/components/MovieList";
 
 import axios from "axios";
 
-
 const Page = () => {
-
   // const create = async () =>{
   //   try{
   //     await axios.post("./api/create", DUMMY_DATA)
@@ -21,8 +20,11 @@ const Page = () => {
 
   return (
     <div>
-      <Navbar/>
-      <Billboard/>
+      <Navbar />
+      <Billboard />
+      <div>
+        <MovieList />
+      </div>
     </div>
   );
 };
