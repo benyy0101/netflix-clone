@@ -14,3 +14,4 @@ const useMovieList = () => {
         isLoading,
     };
     }
+export default useMovieList;

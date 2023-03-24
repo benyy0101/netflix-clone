@@ -5,6 +5,7 @@ import Profile from "../../components/Profile";
 import Navbar from "../../components/Navbar";
 import Billboard from "../../components/Billboard";
 import MovieList from "@/components/MovieList";
+import useMovieList from "@/hooks/useMovieList";
 
 import axios from "axios";
 
@@ -18,12 +19,14 @@ const Page = () => {
   //   }
   // }
 
+  const {data:movies = []} = useMovieList();
+
   return (
     <div>
       <Navbar />
       <Billboard />
       <div>
-        <MovieList />
+        <MovieList data={movies} title="Trending Now"/>
       </div>
     </div>
   );
