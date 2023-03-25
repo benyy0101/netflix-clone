@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { BsFillPlayFill } from "react-icons/bs";
 import {IoPlaySharp} from "react-icons/io5";
+import FavoriteButton from "./favoriteButton";
 
 interface MovieCardProps {
   movie: Record<string, any>;
@@ -105,13 +106,25 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
             >
               <BsFillPlayFill size={30}/>
             </div>
+            <FavoriteButton movie={movie}/>
           </div>
+          <div className="flex flex-col space-y-1">
           <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
           </p>
 
           <div className="flex flex-row mt-4 gap-2 items-center">
-            <p className="text-white text-[10px] lg:text-sm"></p>
+            <p className="text-white text-[10px] lg:text-sm">
+              {Math.floor(movie.runtime / 60)} hours {movie.runtime % 60} min
+            </p>
+            
+          </div>
+
+          <div className="flex flex-row mt-4 gap-2 items-center">
+          <p className="text-white text-[10px] lg:text-sm">
+              {movie.genres.map((genre: any) => genre.name).join(", ")}
+            </p>
+          </div>
           </div>
         </div>
       </div>

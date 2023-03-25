@@ -9,6 +9,7 @@ import useMovieList from "@/hooks/useMovieList";
 
 import axios from "axios";
 import useTMDB from "@/hooks/useTMDB";
+import useFavorites from "@/hooks/useFavorites";
 
 const Page = () => {
   // const create = async () =>{
@@ -20,9 +21,8 @@ const Page = () => {
   //   }
   // }
 
-  const {data:movies = []} = useMovieList();
-
   const {data:trending = []} = useTMDB();
+  const {data:favorites = []} = useFavorites();
 
   console.log(trending);
 
@@ -30,8 +30,9 @@ const Page = () => {
     <div>
       <Navbar />
       <Billboard />
-      <div className="pg-40">
+      <div className="pb-40">
         <MovieList data={trending} title="Trending Now"/>
+        <MovieList data={favorites} title="My List"/>
       </div>
     </div>
   );

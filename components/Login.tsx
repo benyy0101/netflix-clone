@@ -34,7 +34,8 @@ function Login() {
                     <Image 
                     width={100}
                     height={50}
-                    src="/../public/images/logo.png"/>
+                    src="/../public/images/logo.png"
+                    alt="Logo"/>
                 </div>
 
                 <div className="flex justify-center">
