@@ -1,17 +1,18 @@
 import useSWR from 'swr';
 import fetcher from '@/lib/fetcher';
 
-const useMovieList = () => {
-    const { data, error, isLoading } = useSWR('/api/movies', fetcher,{
+const useTMDB = () => {
+    const {data, error, isLoading} = useSWR('/api/tmdb', fetcher,{
         revalidateOnFocus: false,
         revealIfStale: false,
         revalidateOnReconnect: false,
-    });
+    })
     
     return {
         data,
         error,
-        isLoading,
-    };
+        isLoading
     }
-export default useMovieList;
+}
+
+export default useTMDB;

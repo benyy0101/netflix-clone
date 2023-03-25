@@ -8,6 +8,7 @@ import MovieList from "@/components/MovieList";
 import useMovieList from "@/hooks/useMovieList";
 
 import axios from "axios";
+import useTMDB from "@/hooks/useTMDB";
 
 const Page = () => {
   // const create = async () =>{
@@ -21,12 +22,16 @@ const Page = () => {
 
   const {data:movies = []} = useMovieList();
 
+  const {data:trending = []} = useTMDB();
+
+  console.log(trending);
+
   return (
     <div>
       <Navbar />
       <Billboard />
-      <div>
-        <MovieList data={movies} title="Trending Now"/>
+      <div className="pg-40">
+        <MovieList data={trending} title="Trending Now"/>
       </div>
     </div>
   );
