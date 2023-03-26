@@ -5,11 +5,12 @@ import Profile from "../../components/Profile";
 import Navbar from "../../components/Navbar";
 import Billboard from "../../components/Billboard";
 import MovieList from "@/components/MovieList";
-import useMovieList from "@/hooks/useMovieList";
+import InfoModal from "@/components/InfoModal";
 
 import axios from "axios";
 import useTMDB from "@/hooks/useTMDB";
 import useFavorites from "@/hooks/useFavorites";
+import useInfoModal from "@/hooks/useInfoModel";
 
 const Page = () => {
   // const create = async () =>{
@@ -23,11 +24,13 @@ const Page = () => {
 
   const {data:trending = []} = useTMDB();
   const {data:favorites = []} = useFavorites();
+  const {isOpen, closeModal} = useInfoModal();
 
   // console.log("page ", favorites)
 
   return (
     <div>
+      <InfoModal visible={isOpen} onClose={closeModal}/>
       <Navbar />
       <Billboard />
       <div className="pb-40">

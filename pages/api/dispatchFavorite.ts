@@ -43,7 +43,7 @@ export default async function handler(
             title,
             description,
             duration: "" + duration,
-            thumbnailUrl:"https://image.tmdb.org/t/p/w500"+thumbnailUrl,
+            thumbnailUrl:"https://image.tmdb.org/t/p/original"+thumbnailUrl,
             videoUrl: "",
             genre: final_genres,
           },
