@@ -9,6 +9,21 @@ interface MovieCardProps {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+
+  let backdrop;
+  if(movie.backdrop_path === undefined){
+    backdrop = movie.thumbnailUrl
+  }
+  else{
+    backdrop = "https://image.tmdb.org/t/p/original" + movie.backdrop_path;
+  }
+  let runtime;
+  if(movie.runtime == undefined){
+    runtime = movie.duration
+  }
+  else{
+    runtime = movie.runtime
+  }
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
       <Image
@@ -25,7 +40,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
                 w-full
                 h-[12vw]
             `}
-        src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+        src={backdrop}
         alt="movie thumbnail"
         fill
       />
@@ -59,7 +74,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
                 w-full
                 h-[12vw]
             `}
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={backdrop}
           alt="movie thumbnail"
           width={900}
           height={1200}
@@ -115,14 +130,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
 
           <div className="flex flex-row mt-4 gap-2 items-center">
             <p className="text-white text-[10px] lg:text-sm">
-              {Math.floor(movie.runtime / 60)} hours {movie.runtime % 60} min
+              {Math.floor(runtime / 60)} hours {runtime % 60} min
             </p>
             
           </div>
 
           <div className="flex flex-row mt-4 gap-2 items-center">
           <p className="text-white text-[10px] lg:text-sm">
-              {movie.genres.map((genre: any) => genre.name).join(", ")}
+              {movie.genres ? movie.genres.map((genre: any) => genre.name).join(", ") : movie.genre}
             </p>
           </div>
           </div>

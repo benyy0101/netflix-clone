@@ -18,6 +18,7 @@ export default async function handler(
                 }
             }
         });
+        // console.log("favorites ",favorites);
         return res.status(200).json(favorites);
      }
      catch (error){

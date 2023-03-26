@@ -3,11 +3,16 @@ import { without } from "lodash";
 
 import prismadb from "../../lib/prismadb";
 import serverAuth from "@/lib/serverAuth";
+import { read } from "fs";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+
+  console.log(req.method,
+    req.body);
+
   try {
     if (req.method === "POST") {
       const { currentUser } = await serverAuth(req);
@@ -37,8 +42,8 @@ export default async function handler(
             id: new_id,
             title,
             description,
-            duration: ""+duration,
-            thumbnailUrl,
+            duration: "" + duration,
+            thumbnailUrl:"https://image.tmdb.org/t/p/w500"+thumbnailUrl,
             videoUrl: "",
             genre: final_genres,
           },
@@ -74,13 +79,14 @@ export default async function handler(
       }
     }
 
-    if (req.method == "DELETE") {
+    if (req.method === "DELETE") {
       const { currentUser } = await serverAuth(req);
-      const { id } = req.body;
+      
+      const movieId = req.body;
 
       const existingMovie = await prismadb.movie.findUnique({
         where: {
-          id: id,
+          id: movieId
         },
       });
 
@@ -88,7 +94,7 @@ export default async function handler(
         throw new Error("Movie not found");
       }
 
-      const updatedFavorites = without(currentUser.favoritIds, id);
+      const updatedFavorites = without(currentUser.favoritIds, movieId);
 
       const user = await prismadb.user.update({
         where: {

@@ -19,6 +19,8 @@ export default async function handler(
               take:1,
               skip: random,
         });
+
+      //   console.log("random ",movie);
         
         return res.status(200).json(movie[0]);
      }

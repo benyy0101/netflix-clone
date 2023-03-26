@@ -7,6 +7,8 @@ const useFavorites = () => {
         revealIfStale: false,
         revalidateOnReconnect: false,
     })
+
+    console.log('useFavorites', data)
     
     return {
         data,

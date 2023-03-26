@@ -24,7 +24,7 @@ const Page = () => {
   const {data:trending = []} = useTMDB();
   const {data:favorites = []} = useFavorites();
 
-  console.log(trending);
+  // console.log("page ", favorites)
 
   return (
     <div>
